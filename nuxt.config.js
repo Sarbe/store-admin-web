@@ -37,10 +37,15 @@ export default {
     modules: [
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
+        '@nuxtjs/cloudinary',
     ],
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {},
+    // cloudinary Configuration (https://cloudinary.nuxtjs.org/setup)
+    cloudinary: {
+        cloudName: 'sarbe'
+    },
 
     // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
     vuetify: {
@@ -62,5 +67,8 @@ export default {
     },
 
     // Build Configuration (https://go.nuxtjs.dev/config-build)
-    build: {}
+    build: {},
+    server: {
+        port: 3000
+    }
 }

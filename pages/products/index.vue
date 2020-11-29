@@ -1,181 +1,21 @@
 <template>
   <v-container id="dashboard" fluid tag="section">
-    <v-row justify="center">
-      <v-dialog
-        v-model="dialog"
-        fullscreen
-        hide-overlay
-        transition="dialog-bottom-transition"
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            Open Dialog
-          </v-btn>
-        </template>
-
-        <v-card>
-          <v-toolbar dark color="primary">
-            <v-btn icon dark @click="dialog = false">
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
-            <v-toolbar-title>Settings</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-              <v-btn dark text @click="dialog = false"> Save </v-btn>
-            </v-toolbar-items>
-          </v-toolbar>
-          <v-container>
-            <h1>Add Product</h1>
-            <v-divider></v-divider>
-            <!-- Product Form--->
-
-
-          <v-form>
-            <v-container class="py-0">
-              <v-row>
-                <v-col
-                  cols="12"
-                  md="3"
-                >
-                  <v-text-field
-                    label="SKU"
-                    disabled
-                  />
-                </v-col>
-
-                <v-col
-                  cols="12"
-                  md="3"
-                >
-                  <v-text-field
-                    class="purple-input"
-                    label="Product Name:"
-                  />
-                </v-col>
-
-                <v-col
-                  cols="12"
-                  md="3"
-                >
-                  <v-text-field
-                    label="Category:"
-                    class="purple-input"
-                  />
-                </v-col>
-
-                <v-col
-                  cols="12"
-                  md="6"
-                >
-                  <v-text-field
-                    label="Product Model:"
-                    class="purple-input"
-                  />
-                </v-col>
-
-                <v-col
-                  cols="12"
-                  md="6"
-                >
-                  <v-text-field
-                    label="Sub-Category"
-                    class="purple-input"
-                  />
-                </v-col>
-
-                <v-col cols="12">
-                  <v-text-field
-                    label="Manufacturer"
-                    class="purple-input"
-                  />
-                </v-col>
-
-                <v-col
-                  cols="12"
-                  md="3"
-                >
-                  <v-text-field
-                    label="Description"
-                    class="purple-input"
-                  />
-                </v-col>
-
-                <v-col
-                  cols="12"
-                  md="3"
-                >
-                  <v-text-field
-                    label="Descripton(Short)"
-                    class="purple-input"
-                  />
-                </v-col>
-
-                <v-col
-                  cols="12"
-                  md="3"
-                >
-                  <v-text-field
-                    class="purple-input"
-                    label="Specificatione"
-                    type="number"
-                  />
-                </v-col>
-
-                <v-col cols="12">
-                  <v-textarea
-                    class="purple-input"
-                    label="Key Feature"
-                   
-                  />
-                </v-col>
-
-                <v-col
-                  cols="12"
-                  class="text-right"
-                >
-                  
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-form>
-
-
-
-
-
-
-
-
-
-
-
-            <!-- <v-tabs
-            v-model="tab"
-            background-color="transparent"
-            color="basil"
-            grow
-          >
-            <v-tab v-for="item in items" :key="item">
-              {{ item }}
-            </v-tab>
-          </v-tabs>
-
-          <v-tabs-items v-model="tab">
-            <v-tab-item v-for="item in items" :key="item">
-              <v-card color="basil" flat>
-                <v-card-text>{{ text }}</v-card-text>
-              </v-card>
-            </v-tab-item>
-          </v-tabs-items> -->
-          </v-container>
-        </v-card>
-      </v-dialog>
-    </v-row>
+     <v-row>
+          <v-col cols="12" md="3" sm="4" class="hidden-xs-only">
+            Category
+          </v-col>
+            <v-col cols="12" md="9" sm="8" xs="12">
+              Details
+          </v-col>
+    <!-- <ProductInfo v-for="i in 5" :key="i"/> -->
+     </v-row>
   </v-container>
 </template>
 
 <script>
+import ProductInfo  from '@/components/ProductInfo'
 export default {
+  components: { ProductInfo },
   data() {
     return {
       dialog: false,
@@ -185,7 +25,48 @@ export default {
       items: ['Appetizers', 'Entrees', 'Deserts', 'Cocktails'],
       text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ',
+      selected: [2],
+      items: [
+        {
+          action: '15 min',
+          headline: 'Brunch this weekend?',
+          subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+          title: 'Ali Connors',
+        },
+        {
+          action: '2 hr',
+          headline: 'Summer BBQ',
+          subtitle: `Wish I could come, but I'm out of town this weekend.`,
+          title: 'me, Scrott, Jennifer',
+        },
+        {
+          action: '6 hr',
+          headline: 'Oui oui',
+          subtitle: 'Do you have Paris recommendations? Have you ever been?',
+          title: 'Sandra Adams',
+        },
+        {
+          action: '12 hr',
+          headline: 'Birthday gift',
+          subtitle:
+            'Have any ideas about what we should get Heidi for her birthday?',
+          title: 'Trevor Hansen',
+        },
+        {
+          action: '18hr',
+          headline: 'Recipe to try',
+          subtitle:
+            'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
+          title: 'Britta Holt',
+        },
+      ],
     }
+  },
+  methods: {
+    editProduct(prodId) {
+      // fetch Product Full Data
+      this.dialog = true
+    },
   },
 }
 </script>
