@@ -235,7 +235,15 @@
             <v-expansion-panel-header>
               <p class="text-h6">Raw Data</p>
             </v-expansion-panel-header>
-            <v-expansion-panel-content> </v-expansion-panel-content
+            <v-expansion-panel-content>
+              
+              <pre class="body-2">
+                <code>
+                {{getUserRawData()}}
+                </code>
+              </pre>
+              
+               </v-expansion-panel-content
           ></v-expansion-panel>
         </v-expansion-panels>
       </v-tab-item>
@@ -368,6 +376,9 @@ export default {
       sleep(5000)
       return this.orders
     },
+    getUserRawData(){
+      return JSON.stringify(this.userDetails, null, 4)
+    }
   },
 }
 </script>

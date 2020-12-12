@@ -32,7 +32,7 @@
       <v-divider></v-divider>
       <!-- Menu -->
 
-      <v-list nav >
+      <v-list nav>
         <v-list-group
           v-for="item in items"
           :key="item.title"
@@ -76,7 +76,7 @@
         <v-icon>mdi-minus</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
-      <v-spacer />
+      <!-- <v-spacer />
       <v-text-field
         flat
         solo-inverted
@@ -87,7 +87,7 @@
         align="center"
         justify="center"
         class="hidden-sm-and-down"
-      />
+      /> -->
       <v-spacer />
       <v-btn icon>
         <v-icon color="green darken-2"> mdi-domain </v-icon>
@@ -114,8 +114,6 @@
     </v-app-bar>
     <v-main id="main-body">
       <v-container>
-        
-
         <nuxt />
       </v-container>
     </v-main>
@@ -140,9 +138,8 @@
 export default {
   data() {
     return {
-      
-      clipped: true,
-      drawer: true,
+       clipped: false,
+      drawer: false,
       fixed: false,
       items: [
         {

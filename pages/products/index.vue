@@ -1,24 +1,79 @@
 <template>
   <v-container id="dashboard" fluid tag="section">
-     <v-row>
-          <v-col cols="12" md="3" sm="4" class="hidden-xs-only">
-            Category
+    <NavLink :links="navlinks" />
+
+    <v-row>
+      <v-col cols="12" md="3" sm="4" class="col-md-3 hidden-sm-and-down">
+        <v-list dense class="grey lighten-4 pa-2">
+          <v-subheader>CATEGORIES</v-subheader>
+          <v-list-item link v-for="cat in categories" :key="cat">
+            <v-list-item-content>
+              <v-list-item-title> {{ cat }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-col>
+      <v-col cols="12" md="9" sm="8" xs="12">
+        <v-row>
+          <v-col cols="12">
+            <v-text-field
+              flat
+              solo-inverted
+              rounded
+              hide-details
+              prepend-inner-icon="mdi-magnify"
+              label="Search"
+              align="center"
+              justify="center"
+              class="hidden-sm-and-down"
+            />
           </v-col>
-            <v-col cols="12" md="9" sm="8" xs="12">
-              Details
+          <v-col cols="12" md="3" sm="12" xs="12" v-for="n in 10" :key="n">
+            <ProductCardVertical />
           </v-col>
-    <!-- <ProductInfo v-for="i in 5" :key="i"/> -->
-     </v-row>
+        </v-row>
+      </v-col>
+      <!-- <ProductInfo v-for="i in 5" :key="i"/> -->
+    </v-row>
   </v-container>
 </template>
 
 <script>
-import ProductInfo  from '@/components/ProductInfo'
+import ProductInfo from '@/components/ProductInfo'
 export default {
   components: { ProductInfo },
   data() {
     return {
       dialog: false,
+      navlinks: [
+        {
+          text: 'Dashboard',
+          disabled: false,
+          href: 'breadcrumbs_dashboard',
+        },
+        {
+          text: 'Products',
+          disabled: false,
+          href: 'breadcrumbs_link_1',
+        },
+        {
+          text: 'name',
+          disabled: true,
+          href: 'breadcrumbs_link_2',
+        },
+      ],
+       categories: [
+        "All Categories",
+        "Clothing & Apparel",
+        "Garden & Kitchen",
+        "Consumer Electrics",
+        "Health & Beauty",
+        "Computers & Technologies",
+        "Jewelry & Watches",
+        "Phones & Accessories",
+        "Sport & Outdoor",
+        "Babies & Moms",
+      ],
       notifications: false,
       sound: true,
       widgets: false,
